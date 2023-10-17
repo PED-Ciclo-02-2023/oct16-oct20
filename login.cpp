@@ -4,11 +4,6 @@
 
 using namespace std;
 
-
-bool login(string username, string password, string file_location){
-    
-}
-
 string encrypt_password(string password){
     string encryptedPassword;
 
