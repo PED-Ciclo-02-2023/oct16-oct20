@@ -4,9 +4,9 @@
 
 using namespace std;
 
+const string USERS_FILE = "db/users.txt";
+const string ADMIN_FILE = "db/admins.txt";
 
 int main () {
-    string mensaje = "Hola mundo!";
-    cout << encrypt_password(mensaje) << endl;
-    cout << decrypt_password(encrypt_password(mensaje)) << endl;
+    cout << encrypt_password("admin") << endl;
 }
