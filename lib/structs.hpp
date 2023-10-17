@@ -48,14 +48,13 @@ apt appetizers[5] = {
     {"Spinach Artichoke Dip", 6.99},
     {"Onion Rings", 4.75}};
 
-struct order
-{
+struct order{
     string client;
-    int ID;
+    string ID;
     stack<dish> dishes;
     stack<drink> drinks;
     stack<apt> apts;
     bool is_card_payment;
     bool is_delivery;
-};
-typedef struct order Order;
+    string delivery_address;
+}; typedef struct order Order;

@@ -5,6 +5,7 @@ string encrypt_password(string password);
 string decrypt_password(string password);
 
 order create_order();
-stack<dish> add_dishes();
-stack<drink> add_drinks();
-stack<apt> add_apts();
+
+void add_order();
+void dispatch_order();
+void cancel_order(bool is_admin);
