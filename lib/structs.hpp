@@ -3,6 +3,11 @@
 
 using namespace std;
 
+struct user {
+    string username;
+    string password;
+};
+
 struct dish {
     string name;
     float price;
