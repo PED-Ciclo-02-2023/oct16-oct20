@@ -5,6 +5,29 @@
 
 using namespace std;
 
+
+dish dishes[5] = {
+    {"Spaghetti Carbonara", 12.99},
+    {"4 Chessee Pizza", 14.50},
+    {"Pepperonni Pizza", 10.99},
+    {"Margherita Pizza", 16.75},
+    {"4 Seasons Pizza", 18.25}};
+
+drink drinks[5] = {
+    {"Coca-Cola", 2.50},
+    {"Fresh Orange Juice", 3.25},
+    {"Iced Tea", 2.00},
+    {"Lemonade", 2.75},
+    {"Mineral Water", 1.99}};
+
+apt appetizers[5] = {
+    {"Mozzarella Sticks", 5.99},
+    {"Chicken Wings", 7.50},
+    {"Bruschetta", 6.25},
+    {"Spinach Artichoke Dip", 6.99},
+    {"Onion Rings", 4.75}};
+
+
 void printMenu(string menuType, auto *items, int size)
 {
     cout << "Menú de " << menuType << ":" << endl;
@@ -56,12 +79,36 @@ stack<T> add_items(const T *menu, const string &itemType, int menuSize)
     return orderItems;
 };
 
+template <typename T>
+double calculate_order_subtotal(const stack<T>& orderItems)
+{
+    double total = 0.0;
+
+    // Recorrer la pila de elementos y suma los precios
+    stack<T> tempStack = orderItems; // Copia de la pila original
+
+    while (!tempStack.empty())
+    {
+        T item = tempStack.top();
+        total += item.price;
+        tempStack.pop();
+    }
+
+    return total;
+}
+// Funcion para calcular el total de una sola orden
+double calculate_order_total(const order& order){
+    return (calculate_order_subtotal(order.apts) + calculate_order_subtotal(order.dishes) + calculate_order_subtotal(order.drinks)); 
+}
+
+
 order create_order()
 {
     order newOrder;
 
     // Solicitar información al cliente
     cout << "Nombre del cliente: ";
+    cin.ignore(); // Limpiar el búfer de entrada
     getline(cin, newOrder.client);
 
     // Asignar ID

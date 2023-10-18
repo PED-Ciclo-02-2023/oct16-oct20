@@ -31,8 +31,8 @@ string trim(const string& str) {
     return result;
 }
 
-// Obteniendo la constraseña de un usuario a partir del nombre de usuario
-string GetPasswordForUser(const string& username, const string& filename) {
+// Función para obtener la constraseña de un usuario a partir del nombre de usuario
+string get_password_for_username(const string& username, const string& filename) {
     ifstream file(filename);
     string line;
     vector<user> users;
@@ -59,8 +59,8 @@ string GetPasswordForUser(const string& username, const string& filename) {
             }
         }
 
-        return "User not found";  // Si no encuentro al usuario
+        return "U404";  // Si no encuentro al usuario
     } else {
-        return "File not found"; // Si el archivo no se pudo abrir
+        return "F404"; // Si el archivo no se pudo abrir
     }
 }
