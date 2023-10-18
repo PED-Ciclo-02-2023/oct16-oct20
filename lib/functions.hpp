@@ -6,6 +6,6 @@ string decrypt_password(string password);
 
 order create_order();
 
-void add_order();
-void dispatch_order();
-void cancel_order(bool is_admin);
+void add_order(stack<order>& orders);
+void dispatch_order(stack<order>& orders);
+void cancel_order(stack<order>& orders, bool is_admin);

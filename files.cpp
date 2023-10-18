@@ -31,23 +31,23 @@ string trim(const string& str) {
     return result;
 }
 
-// Modify the GetPasswordForUser function
+// Obteniendo la constraseña de un usuario a partir del nombre de usuario
 string GetPasswordForUser(const string& username, const string& filename) {
     ifstream file(filename);
     string line;
-    vector<user> users;  // Vector to store users
+    vector<user> users;
 
     if (file.is_open()) {
         user currentUser;
         bool isUsername = true;
 
         while (getline(file, line)) {
-            line = trim(line); // Trim leading and trailing whitespace
+            line = trim(line); // Quitar los espacios en blanco
             if (isUsername) {
                 currentUser.username = line;
             } else {
                 currentUser.password = line;
-                users.push_back(currentUser);  // Add the current user to the vector
+                users.push_back(currentUser);  // Añadir el usuario a la lista
             }
             isUsername = !isUsername;
         }
@@ -55,12 +55,12 @@ string GetPasswordForUser(const string& username, const string& filename) {
 
         for (auto user : users) {
             if (user.username == username) {
-                return user.password; // Return the password if the username is found
+                return user.password; // Devolver la contraseña si se encuentra al usuario
             }
         }
 
-        return "User not found";  // Return a message if the username is not found
+        return "User not found";  // Si no encuentro al usuario
     } else {
-        return "File not found"; // Return a message if the file cannot be opened
+        return "File not found"; // Si el archivo no se pudo abrir
     }
 }
